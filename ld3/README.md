@@ -31,11 +31,18 @@ npm run measure
 | Failas | Paskirtis |
 |---|---|
 | `measure.mjs` | Visi matavimai (C1, C2, I1, I2) ir kontroliniai patikrinimai |
-| `firebase.json` | Emuliatoriaus konfigūracija; nurodo `../firebase/firestore.rules` |
+| `firebase.json` | Emuliatoriaus konfigūracija (host, prievadas) |
 | `package.json`, `package-lock.json` | Užfiksuotos priklausomybės ir `measure` skriptas |
 
-Taisyklės skaitomos iš `../firebase/firestore.rules` (santykinai su `measure.mjs`),
-todėl `ld3` turi būti repozitorijos šaknyje šalia `firebase/`.
+Taisykles `measure.mjs` skaito iš `../firebase/firestore.rules` ir įkelia į emuliatorių per
+`initializeTestEnvironment`, todėl `ld3` turi būti repozitorijos šaknyje šalia `firebase/`.
+`firebase.json` taisyklių kelio neturi (firebase-tools neleidžia failų už projekto aplanko),
+tad emuliatoriaus įspėjimas „will default to allowing all reads and writes“ yra tikėtinas:
+iškart po paleidimo taisyklės pakeičiamos tikromis.
+
+`results.json` įrašo `commit` (HEAD), `rulesLastChangedCommit` ir taisyklių SHA-256:
+`rulesSha256` (failas diske; Windows su `core.autocrlf=true` – CRLF) ir `rulesSha256Lf`
+(su LF eilučių pabaigomis, nepriklauso nuo OS).
 
 ## Ką tikrina kiekviena metrika
 

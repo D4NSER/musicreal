@@ -134,7 +134,7 @@ try {
   const result = {
     projectId,
     commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
-    rulesCommit: execFileSync('git', ['log', '-1', '--format=%H', '--', '../firebase/firestore.rules'],
+    rulesLastChangedCommit: execFileSync('git', ['log', '-1', '--format=%H', '--', '../firebase/firestore.rules'],
       { encoding: 'utf8' }).trim(),
     rulesSha256: createHash('sha256').update(rules).digest('hex'),
     rulesSha256Lf: createHash('sha256').update(rules.replace(/\r\n/g, '\n')).digest('hex'),
