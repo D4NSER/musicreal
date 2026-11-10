@@ -1,0 +1,13 @@
+node_modules/
+*.log
+results.json
+# Vietiniai rezultatai, ekranvaizdžiai ir ataskaitos juodraščiai neįkeliami
+*.png
+*.jpg
+*.jpeg
+evidence.html
+*.local.md
+.env
+.env.*
+*serviceAccount*.json
+*service-account*.json
